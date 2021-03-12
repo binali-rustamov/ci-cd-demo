@@ -15,17 +15,17 @@ build:
     paths:
       - dist/
       - node_modules/
-  only:
-    - merge_requests
-    - master
+#  only:
+#    - merge_request
+#    - master
 test:
   stage: test
   image: node:15.11.0-alpine3.10
   script:
     - npm test
-  only:
-    - merge_requests
-    - master
+#  only:
+#    - merge_requests
+#    - master
   cache:
     paths:
       - dist/
