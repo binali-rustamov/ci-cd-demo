@@ -13,8 +13,7 @@ import * as bodyParser from 'body-parser';
 let run = async () => {
     console.log("Connecting to mongo...")
     try {
-        await mongoose.connect('mongodb://root:example@localhost:27017/todo?authSource=admin',
-            {useNewUrlParser: true, useUnifiedTopology: true});
+        await connectToMongo()
     } catch (e) {
         console.log(e);
     }
@@ -32,3 +31,14 @@ let run = async () => {
     app.listen(3000);
 }
 run();
+
+async function connectToMongo() {
+    let user = process.env.MONGO_USER;
+    let host = process.env.MONGO_HOST;
+    let port = process.env.MONGO_PORT;
+    let password = process.env.MONGO_PASS;
+    let db = process.env.MONGO_DB;
+    let initDb = process.env.MONGO_INITDB;
+    await mongoose.connect(`mongodb://${user}:${password}@${host}:${port}/${db}?authSource=${initDb}`,
+        {useNewUrlParser: true, useUnifiedTopology: true});
+}
