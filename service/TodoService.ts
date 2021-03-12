@@ -19,9 +19,9 @@ export class TodoService implements ITodoService {
     }
 
     public create(model: ITodoItem): Promise<ITodoItem> {
-        if (model.description == null) {
-            throw new Error("Provide valid description");
-        }
+        // if (model.description == null) {
+        //     throw new Error("Provide valid description");
+        // }
         return this.repo.save(model);
     }
 
