@@ -26,3 +26,7 @@ test:
   only:
     - merge_requests
     - master
+  cache:
+    paths:
+      - dist/
+      - node_modules/
