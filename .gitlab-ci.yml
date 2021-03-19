@@ -33,7 +33,7 @@ test:
 
 containerize-todoservice:
   stage: containerize
-  image: docker:dind
+  image: docker:latest
   script:
     - docker build -t esdp/todoservice .
     - docker login -u $ESDP_USER -p $ESDP_PASSWORD
