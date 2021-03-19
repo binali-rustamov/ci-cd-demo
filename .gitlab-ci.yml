@@ -1,7 +1,7 @@
 stages:
   - build
   - test
-#  - containerize
+  - containerize
 #  - deploy
 
 
@@ -30,3 +30,14 @@ test:
     paths:
       - dist/
       - node_modules/
+
+containerize-todoservice:
+  stage: containerize
+  image: docker:dind
+  script:
+    - docker build -t esdp/todoservice .
+    - docker login -u $ESDP_USER -p $ESDP_PASSWORD
+    - docker push esdp/todoservice
+    - docker rm esdp/todoservice
+  only:
+    - master
