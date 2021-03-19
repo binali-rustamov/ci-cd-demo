@@ -40,6 +40,5 @@ containerize-todoservice:
     - docker build -t esdpjs1/todoservice .
     - docker login -u $ESDP_USER -p $ESDP_PASSWORD
     - docker push esdpjs1/todoservice
-    - docker rm esdpjs1/todoservice
   only:
     - master
