@@ -37,7 +37,8 @@ deploy:
   <<: *cache
   image: tmaier/docker-compose
   script:
-    - docker-compose up & echo "Started!"
+    - docker-compose up -d
+    - echo "Started!"
   only:
     - master
 
