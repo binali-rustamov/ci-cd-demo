@@ -1,6 +1,7 @@
 // Required imports
 import "reflect-metadata";
 import mongoose from "mongoose";
+import cors from 'cors';
 
 // Import controllers here
 import "./controller/TodoController";
@@ -20,6 +21,7 @@ let run = async () => {
     console.log("Starting server...");
     let server = new InversifyExpressServer(container);
     server.setConfig((app) => {
+        app.use(cors())
         // add body parser
         app.use(bodyParser.urlencoded({
             extended: true
