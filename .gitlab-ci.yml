@@ -37,9 +37,9 @@ containerize-todoservice:
   stage: containerize
   image: docker:latest
   script:
-    - docker build -t esdp/todoservice .
+    - docker build -t esdpjs1/todoservice .
     - docker login -u $ESDP_USER -p $ESDP_PASSWORD
-    - docker push esdp/todoservice
-    - docker rm esdp/todoservice
+    - docker push esdpjs1/todoservice
+    - docker rm esdpjs1/todoservice
   only:
     - master
