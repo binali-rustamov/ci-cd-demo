@@ -38,6 +38,8 @@ deploy:
   image: tmaier/docker-compose
   script:
     - docker-compose up
+  only:
+    - master
 
 #containerize-todoservice:
 #  <<: *cache
