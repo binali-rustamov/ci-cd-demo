@@ -8,8 +8,8 @@
 stages:
   - build
   - test
-  - containerize
-#  - deploy
+  #  - containerize
+  - deploy
 
 
 build:
@@ -32,13 +32,22 @@ test:
 #    - merge_requests
 #    - master
 
-containerize-todoservice:
+deploy:
+  stage: deploy
   <<: *cache
-  stage: containerize
-  image: docker:latest
+  image: tmaier/docker-compose
   script:
-    - docker build -t esdpjs1/todoservice .
-    - docker login -u $ESDP_USER -p $ESDP_PASSWORD
-    - docker push esdpjs1/todoservice
+    - docker-compose up
   only:
     - master
+
+#containerize-todoservice:
+#  <<: *cache
+#  stage: containerize
+#  image: docker:latest
+#  script:
+#    - docker build -t esdpjs1/todoservice .
+#    - docker login -u $ESDP_USER -p $ESDP_PASSWORD
+#    - docker push esdpjs1/todoservice
+#  only:
+#    - master
