@@ -1,3 +1,10 @@
+.cache: &cache
+  cache:
+    paths:
+      - dist/
+      - node_modules/
+
+
 stages:
   - build
   - test
@@ -6,19 +13,17 @@ stages:
 
 
 build:
+  <<: *cache
   stage: build
   image: node:15.11.0-alpine3.10
   script:
     - npm install
     - npm run build
-  cache:
-    paths:
-      - dist/
-      - node_modules/
 #  only:
 #    - merge_request
 #    - master
 test:
+  <<: *cache
   stage: test
   image: node:15.11.0-alpine3.10
   script:
@@ -26,12 +31,9 @@ test:
 #  only:
 #    - merge_requests
 #    - master
-  cache:
-    paths:
-      - dist/
-      - node_modules/
 
 containerize-todoservice:
+  <<: *cache
   stage: containerize
   image: docker:latest
   script:
