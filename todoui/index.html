@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="application/javascript">
+    fetch('http://localhost:8082/todo')
+        .then(async (response) => {
+            console.log(await response.json());
+        })
+        .then((data) => {
+            console.log(data);
+        });
+</script>
+</body>
+</html>

@@ -126,7 +126,7 @@ dist
 # Ignore all local history of files
 .history
 .ionide
-dist/
+todoservice/dist/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode
 .idea/
